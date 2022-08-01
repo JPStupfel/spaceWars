@@ -8,4 +8,4 @@
 
 Army.create name: 'orcs', northing: 100, easting: 100, range:40, mobility: 40, souls: 2000
 
-Army.create name: 'marines', northing: 100, easting: 100, range:40, mobility: 40, souls: 2000
+Army.create name: 'marines', northing: 50, easting: 100, range:40, mobility: 40, souls: 2000
