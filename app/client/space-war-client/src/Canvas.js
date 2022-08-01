@@ -3,33 +3,26 @@ import React, { useRef, useEffect, useState } from 'react'
 
 //fetch armies array, separate circle arc into own logic?
 
- export default function Canvas({props}) {
+ export default function Canvas({armies}) {
 
     const [coords, setCoords] = useState([200, 50])
-    const [armies, setArmies] = useState([])
 
     const canvasRef = useRef(null)
 
-    useEffect(
     
-      ()=>{
-      fetch('http://localhost:3000/armies')
-  .then((response) => response.json())
-  .then((data) => console.log(data))},
-      []
-    )
   
   useEffect(() => {
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
 
     context.beginPath();
-    context.arc(coords[0], coords[1], 10, 0, 2 * Math.PI);
+    console.log(armies[0])
+    if (armies[0]) {
+    context.arc(armies[0].northing, armies[0].easting, 10, 0, 2 * Math.PI);
     context.stroke();
-        
-        
-  }, [])
+        }
+  }, [armies])
   
-  return <canvas id='my_canvas' ref={canvasRef} {...props}/>
+  return <canvas id='my_canvas' ref={canvasRef} />
 }
 
