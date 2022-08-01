@@ -1,21 +1,30 @@
 import React, { useRef, useEffect, useState } from 'react'
 
 
-//draw circle, make state for coordinates, set default...go make server, fetch coordinates
-
+//fetch armies array, separate circle arc into own logic?
 
  export default function Canvas({props}) {
 
     const [coords, setCoords] = useState([200, 50])
-  
-  const canvasRef = useRef(null)
+    const [armies, setArmies] = useState([])
+
+    const canvasRef = useRef(null)
+
+    useEffect(
+    
+      ()=>{
+      fetch('http://localhost:3000/armies')
+  .then((response) => response.json())
+  .then((data) => console.log(data))},
+      []
+    )
   
   useEffect(() => {
     const canvas = canvasRef.current
     const context = canvas.getContext('2d')
 
     context.beginPath();
-    context.arc(coords[0], coords[1], 40, 0, 2 * Math.PI);
+    context.arc(coords[0], coords[1], 10, 0, 2 * Math.PI);
     context.stroke();
         
         
